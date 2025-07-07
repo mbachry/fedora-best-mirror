@@ -89,6 +89,7 @@ def get_top_urls(mirrors, timeout) -> list[TestResult]:
             avg_rate, max_rate = asyncio.run(check_speed(mirror, timeout))
         except OSError as e:
             print(f'ERROR: {mirror}: {e}', file=sys.stderr)
+            continue
         stats.append(TestResult(url=mirror, avg_rate=avg_rate, max_rate=max_rate))
     return stats
 
